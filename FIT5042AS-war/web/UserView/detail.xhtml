@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>User Detail</title> 
+    </h:head>
+    <h:body>
+        <b:navBar brand="User Deatil" brandHref="#"  inverse="true">
+            <b:navbarLinks>
+                <b:navLink value="Home" href="#"></b:navLink>
+                <b:navLink value="User" href="index.xhtml"></b:navLink>
+                <b:navLink value="Contact" href="#contact"></b:navLink>
+            </b:navbarLinks>
+        </b:navBar>
+        <div>
+            <h4>User Details</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    User Id
+                </dt>
+
+                <dd>
+                    #{userController.user.userId}
+                </dd>
+                
+                <dt>
+                    User Name
+                </dt>
+
+                <dd>
+                    #{userController.user.firstName} #{userController.user.lastName}
+                </dd>
+
+                <dt>
+                    User Type
+                </dt>
+
+                <dd>
+                    #{userController.user.type}
+                </dd>
+
+                <dt>
+                    Email
+                </dt>
+
+                <dd>
+                    #{userController.user.email}
+                </dd>
+                
+                <dt>
+                    Address
+                </dt>
+
+                <dd>
+                    #{userController.user.address}
+                </dd>
+
+            </dl>
+            <p>
+                <h:link value="Back to User List" outcome="index" /> 
+            </p>
+        </div> 
+    </h:body>
+</html>
+

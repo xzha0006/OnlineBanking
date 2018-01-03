@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Create User</title> 
+    </h:head>
+    <h:body>
+        <b:navBar brand="FIT5042 Online Banking" brandHref="index.xhtml"  inverse="true">
+            <b:navbarLinks>
+                <b:navLink value="Home" href="#"></b:navLink>
+                <b:navLink value="User" href="UserView/index.xhtml"></b:navLink>
+                <b:navLink value="Contact" href="#contact"></b:navLink>
+            </b:navbarLinks>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#{userController.logout()}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+            </ul>
+        </b:navBar>
+        <h:form>
+            <b:row>
+                <b:column span="2" offset="1">
+                    <h:outputLabel value="From Account Id:"/>
+                </b:column>
+                <b:column span="4">
+                    <b:inputText value="#{moneyController.fromId}" placeholder="From Account Id" required="true" validatorMessage="Please enter a valid account id">
+                        <f:validateRegex pattern="\d+" />
+                    </b:inputText>
+                </b:column>
+            </b:row>
+            <b:row>
+                <b:column span="2" offset="1">
+                    <h:outputLabel value="To Account Id:" />
+                </b:column>
+                <b:column span="4">
+                    <b:inputText value="#{moneyController.toId}" placeholder="To Account Id" required="true" validatorMessage="Please enter a valid account id">
+                        <f:validateRegex pattern="\d+" />
+                    </b:inputText>
+                </b:column>
+            </b:row>
+            <b:row>
+                <b:column span="2" offset="1">
+                    <h:outputLabel value="Amount:"/>
+                </b:column>
+                <b:column span="4">
+                    <b:inputText value="#{moneyController.amount}" placeholder="Amount" validatorMessage="Please enter a valid amount">
+                        <f:validateRegex pattern="(\d+(\.\d+)?)" />
+                    </b:inputText>
+                </b:column>
+            </b:row>
+            <b:row>
+                <b:column span="2" offset="1">
+                    <h:outputLabel value="Message:"/>
+                </b:column>
+                <b:column span="4">
+                    <b:inputText value="#{moneyController.message}" placeholder="Message" />
+                </b:column>
+            </b:row>
+            
+            <b:row>
+                <b:column span="2" offset="1">
+                    <b:commandButton value="Transfer" look="info" action="#{moneyController.transfer()}">
+                    </b:commandButton>
+                </b:column>
+            </b:row>
+        </h:form> 
+    </h:body>
+</html>
+

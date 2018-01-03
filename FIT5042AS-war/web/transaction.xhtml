@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Transaction Search #{transactionController.transaction.transactionName}</title> 
+    </h:head>
+    <h:body>
+        <b:navBar brand="Transaction Deatil" brandHref="#"  inverse="true">
+            <b:navbarLinks>
+                <b:navLink value="Home" href="#"></b:navLink>
+                <b:navLink value="About" href="#about"></b:navLink>
+                <b:navLink value="Contact" href="#contact"></b:navLink>
+            </b:navbarLinks>
+        </b:navBar>
+        <div>
+            <h4>Transaction Details</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    Transaction Id
+                </dt>
+
+                <dd>
+                    #{transactionController.transaction.transactionId}
+                </dd>
+                
+                <dt>
+                    Transaction Name
+                </dt>
+
+                <dd>
+                    #{transactionController.transaction.transactionName}
+                </dd>
+
+                <dt>
+                    Transaction Type
+                </dt>
+
+                <dd>
+                    #{transactionController.transaction.transactionType}
+                </dd>
+
+                <dt>
+                    Description
+                </dt>
+
+                <dd>
+                    #{transactionController.transaction.description}
+                </dd>
+                
+                <dt>
+                    Transaction is made by
+                </dt>
+
+                <dd>
+                    #{transactionController.transaction.bankUser.firstName}
+                </dd>
+
+            </dl>
+            <p>
+                <h:link value="Back to Transactions" outcome="index" /> 
+            </p>
+        </div> 
+    </h:body>
+</html>
+

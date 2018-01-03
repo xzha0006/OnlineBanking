@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <script type="text/javascript">
+            function myCallback(obj) {
+                var msg = "Hi " + obj.name+ ", welcome to online banking!";
+                alert(msg);
+            }
+            //window.onload = callback;
+
+        </script>
+        <script type="text/javascript" src="http://localhost:8888/Webservices/webresources/transactionType"/>
+        <title>Transaction Search</title> 
+    </h:head>
+    <h:body>
+        <b:navBar brand="FIT5042 Online Banking" brandHref="index.xhtml"  inverse="true">
+            <b:navbarLinks>
+                <b:navLink value="Home" href="faces/index.xhtml"></b:navLink>
+                <b:navLink value="User" href="UserView/index.xhtml"></b:navLink>
+                <b:navLink value="Transfer" href="MoneyTransfer/moneyTransfer.xhtml"></b:navLink>
+            </b:navbarLinks>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+            </ul>
+        </b:navBar>
+        <b:container fluid="true">
+
+            <h:form>
+                <b:row>
+                    <b:column span="3" offset="1">
+                        <h:inputText id="welcome" value="#{transactionManagedBean.welcome}"  >
+                            <f:ajax event="keyup" render="surprise" />
+                        </h:inputText>
+                    </b:column>
+                    <b:column span="2" >
+                        <h:outputText id="surprise" value="#{transactionManagedBean.welcome}"></h:outputText>
+                    </b:column>
+                    
+                </b:row>
+                <b:row>
+                    <br/>
+                </b:row>
+                <b:row>
+                    <b:dataTable span="10" offset="1" value="#{transactionManagedBean.allTransactions}"
+                                 var="transaction" multi-column-search='true' multi-column-search-position='top' >
+                        <b:dataTableColumn value="#{transaction.transactionId}" />
+                        <b:dataTableColumn value="#{transaction.transactionName}" />
+                        <b:dataTableColumn value="#{transaction.transactionType}" />
+                        <b:dataTableColumn label="Actions" contentStyle="text-align: center" searchable="false">
+                            <b:commandButton value="Deatil" look="info" action="transaction" >
+                                <f:param name="transactionId" value="#{transaction.transactionId}"></f:param>
+                            </b:commandButton>
+                        </b:dataTableColumn>
+                    </b:dataTable>
+                </b:row>
+
+            </h:form>
+
+        </b:container>
+    </h:body>
+</html>
+

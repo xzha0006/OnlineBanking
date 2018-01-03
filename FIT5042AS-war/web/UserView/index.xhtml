@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>User List</title> 
+    </h:head>
+    <h:body>
+        <b:navBar brand="FIT5042 Online Banking" brandHref="../index.xhtml"  inverse="true">
+            <b:navbarLinks>
+                <b:navLink value="Home" href="#"></b:navLink>
+                <b:navLink value="User" href="index.xhtml"></b:navLink>
+                <b:navLink value="Contact" href="#contact"></b:navLink>
+            </b:navbarLinks>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#{userController.logout()}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+            </ul>
+        </b:navBar>
+        <b:container fluid="true">
+            <h:form>
+                <b:row>
+                    <b:column span="1" offset="1">
+                        <h:link value="Create User" outcome="create.xhtml" />
+                    </b:column>
+                    <b:column span="2">
+                        <h:link value="Create TransactionType" outcome="createTransactionType.xhtml" />
+                    </b:column>
+                </b:row>
+                <b:row>
+                    <br/>
+                    <br/>
+                </b:row>
+                <b:row>
+                    <b:dataTable span="10" offset="1" value="#{userController.allUsers}"
+                                 var="bankuser" multi-column-search='true' multi-column-search-position='top' >
+                        <b:dataTableColumn value="#{bankuser.userId}" />
+                        <b:dataTableColumn value="#{bankuser.firstName}" />
+                        <b:dataTableColumn value="#{bankuser.lastName}" />
+                        <b:dataTableColumn value="#{bankuser.email}" />
+                        <b:dataTableColumn value="#{bankuser.type}" />
+                        <b:dataTableColumn label="Actions" contentStyle="text-align: center" searchable="false">
+                            <b:commandButton value="Edit" look="info" action="edit.xhtml" >
+                                <f:param name="userId" value="#{bankuser.userId}"></f:param>
+                            </b:commandButton>&nbsp;
+                            <b:commandButton value="Delete" look="info" action="#{userController.removeUser(bankuser.userId)}" >
+                            </b:commandButton>&nbsp;
+                            <b:commandButton value="Detail" look="info" action="detail.xhtml" >
+                                <f:param name="userId" value="#{bankuser.userId}"></f:param>
+                            </b:commandButton>
+                        </b:dataTableColumn>
+                    </b:dataTable>
+                </b:row>
+
+            </h:form>
+        </b:container>
+    </h:body>
+</html>
+

@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>User Authentication</title>
+    </h:head>
+    <h:body>
+        <h1 class="col-sm-offset-2">User Authentication</h1>
+        <br/>
+        <form class="form-horizontal" method="POST" action="j_security_check">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="j_username">Username:</label>
+                <div class="col-sm-4"> 
+                    <input type="text" class="form-control" name="j_username" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="j_password">Password:</label>
+                <div class="col-sm-4"> 
+                    <input type="password" class="form-control" name="j_password" />
+                </div>
+            </div>
+            <div class="form-group"> 
+                <div class="col-sm-offset-2 col-sm-10">
+                    <input type="submit" class="btn btn-primary" value="Submit"/>
+                </div>
+            </div>
+        </form>
+    </h:body>
+</html>
+

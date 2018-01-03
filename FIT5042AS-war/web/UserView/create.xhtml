@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Create User</title> 
+    </h:head>
+    <h:body>
+        <b:navBar brand="User Deatil" brandHref="#"  inverse="true">
+            <b:navbarLinks>
+                <b:navLink value="Home" href="#"></b:navLink>
+                <b:navLink value="User" href="index.xhtml"></b:navLink>
+                <b:navLink value="Contact" href="#contact"></b:navLink>
+            </b:navbarLinks>
+        </b:navBar>
+        <h:form>
+            <b:row>
+                <b:column span="2" offset="1">
+                    <h:outputLabel value="FirstName:"/>
+                </b:column>
+                <b:column span="4">
+                    <b:inputText value="#{user.firstName}" placeholder="FirstName" required="true" requiredMessage="First name is required"/>
+                </b:column>
+            </b:row>
+            <b:row>
+                <b:column span="2" offset="1">
+                    <h:outputLabel value="LastName:" />
+                </b:column>
+                <b:column span="4">
+                    <b:inputText value="#{user.lastName}" placeholder="LastName:" required="true" requiredMessage="Last name is required"/>
+                </b:column>
+            </b:row>
+            <b:row>
+                <b:column span="2" offset="1">
+                    <h:outputLabel value="Email"/>
+                </b:column>
+                <b:column span="4">
+                    <b:inputText value="#{user.email}" placeholder="Email" validatorMessage="Please enter a valid email like abc@123.com">
+                        <f:validateRegex pattern="(\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*)" />
+                    </b:inputText>
+                </b:column>
+            </b:row>
+            <b:row>
+                <b:column span="2" offset="1">
+                    <h:outputLabel value="Password:"/>
+                </b:column>
+                <b:column span="4">
+                    <b:inputText value="#{user.password}" placeholder="Password" required="true" requiredMessage="Password is required" />
+                </b:column>
+            </b:row>
+            <b:row>
+                <b:column span="2" offset="1">
+                    <h:outputLabel value="Phone Number:"/>
+                </b:column>
+                <b:column span="4">
+                    <b:inputText value="#{user.phoneNumber}" placeholder="Phone Number" validatorMessage="Please enter a valid phone number like 0406 123-456">
+                        <f:validateRegex pattern="(\d{4} \d{3}\-\d{3})" />
+                    </b:inputText>
+                </b:column>
+            </b:row>
+            <b:row>
+                <b:column span="2" offset="1">
+                    <h:outputLabel value="User Type:"/>
+                </b:column>
+                <b:column span="4">
+                    <b:inputText value="#{user.type}" placeholder="public or worker" required="true" requiredMessage="User type is required">
+                    </b:inputText>
+                        
+                </b:column>
+            </b:row>
+            <b:row>
+                <b:column span="2" offset="1">
+                    <b:commandButton value="Create" look="info" action="#{userController.addUser(user)}" />
+                </b:column>
+            </b:row>
+        </h:form> 
+    </h:body>
+</html>
+
